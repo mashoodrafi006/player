@@ -4,7 +4,6 @@ import { CONTROLLER_ERROR } from '../utils/errors';
 import { API_STATUS_CODES, RESPONSE_MESSAGES, PLAYERS } from '../utils/constant';
 
 const playerController = {};
-
 playerController.start = async (req, res) => {
     try {
         const number = await gameService.start();
@@ -27,6 +26,9 @@ playerController.start = async (req, res) => {
 playerController.gamePlayedByPlayer1 = async (req, res) => {
     try {
         const { number } = req.query;
+        if (!number){
+            number = gameService.randomIntFromInterval();
+        }
         const numberPlayedWith = await gameService.play(PLAYERS.PLAYER_1, number);
 
         let response = {};
@@ -45,6 +47,9 @@ playerController.gamePlayedByPlayer1 = async (req, res) => {
 playerController.gamePlayedByPlayer2 = async (req, res) => {
     try {
         const { number } = req.query;
+        if (!number){
+            number = gameService.randomIntFromInterval();
+        }
         const numberPlayedWith = await gameService.play(PLAYERS.PLAYER_2, number);
 
         let response = {};
