@@ -35,11 +35,8 @@ playerController.gamePlayedByPlayer1 = async (req, res) => {
         response.body = numberPlayedWith;
         return res.json(response);
     } catch (error) {
-        console.log(error);
-        logger.log({
-            level: 'error',
-            message: error.message,
-        });
+
+        logger.log({ level: 'error', message: error.message });
         res.json(CONTROLLER_ERROR)
     }
 }
@@ -56,11 +53,8 @@ playerController.gamePlayedByPlayer2 = async (req, res) => {
         response.body = numberPlayedWith;
         return res.json(response);
     } catch (error) {
-        console.log(error);
-        logger.log({
-            level: 'error',
-            message: error.message,
-        });
+
+        logger.log({ level: 'error', message: error.message });
         res.json(CONTROLLER_ERROR)
     }
 }

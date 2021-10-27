@@ -1,10 +1,12 @@
 import Axios from 'axios';
-import { APPLICATION } from '../utils/constant';
+import config from '../config';
+
 const requests = {};
 requests.sendNumberToPlayer1 = async (number) => {
     try {
-        const response = await Axios.get(`${APPLICATION.URL}/player1?number=${number}`);
-        console.log(response.data);
+        const response = await Axios.get(`${config.applicationUrl}/player1?number=${number}`);
+
+        return response.data;
     } catch (error) {
         throw error;
     }
@@ -12,9 +14,9 @@ requests.sendNumberToPlayer1 = async (number) => {
 
 requests.sendNumberToPlayer2 = async (number) => {
     try {
-        const response = await Axios.get(`${APPLICATION.URL}/player2?number=${number}`);
-        console.log(response.data);
+        const response = await Axios.get(`${config.applicationUrl.URL}/player2?number=${number}`);
 
+        return response.data;
     } catch (error) {
         throw error;
     }

@@ -1,5 +1,6 @@
 import requests from "../requests/sendToPlayer";
 import { PLAYERS } from '../utils/constant';
+import logger from "../utils/logging";
 
 const gameService = {};
 
@@ -9,9 +10,11 @@ gameService.play = async (playerNumber, number) => {
         const minusone = -1;
         const zero = 0;
         const plusone = +1;
+
         console.log('');
         console.log('-------------------------');
-        console.log('Number: ', number, ", Player: ", playerNumber);
+        console.log("Player: ", playerNumber, ", Number: ", number);
+        console.log('');
         const minused1 = ((parseInt(number) + parseInt(minusone)) % 3);
         const addedZero = ((parseInt(number) + parseInt(zero)) % 3);
         const addedOne = ((parseInt(number) + parseInt(plusone)) % 3);
@@ -27,9 +30,9 @@ gameService.play = async (playerNumber, number) => {
             responseBack.resultingNumber = ((parseInt(number) + parseInt(plusone)) / 3);
         }
 
-        if(responseBack.resultingNumber == 1){
+        if (responseBack.resultingNumber == 1) {
             console.log("MATCH WON");
-        }else{
+        } else {
             if (responseBack.resultingNumber && playerNumber == PLAYERS.PLAYER_1) {
                 requests.sendNumberToPlayer2(responseBack.resultingNumber);
             } else if (responseBack.resultingNumber && playerNumber == PLAYERS.PLAYER_2) {
@@ -40,7 +43,6 @@ gameService.play = async (playerNumber, number) => {
         return responseBack;
 
     } catch (error) {
-        console.log(error);
         throw error;
     }
 }
@@ -56,7 +58,6 @@ gameService.start = async () => {
 
         return number;
     } catch (error) {
-        console.log(error);
         throw error;
     }
 }
