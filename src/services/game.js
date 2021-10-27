@@ -1,4 +1,4 @@
-import { PLAYERS } from '../utils/constant';
+import { PLAYERS, NUMBERS_RANGE } from '../utils/constant';
 import requests from "../requests/sendToPlayer";
 
 const gameService = {};
@@ -45,10 +45,16 @@ gameService.play = async (playerNumber, number) => {
     }
 }
 
+/**
+ * @description Return a random number from a given range.
+*/
 gameService.randomIntFromInterval = () => {
-    return Math.floor(Math.random() * (100 - 3 + 1) + 3)
+    return Math.floor(Math.random() * (NUMBERS_RANGE.MAX - NUMBERS_RANGE.MIN + 1) + NUMBERS_RANGE.MIN)
 }
 
+/**
+ * @description Return a random number from a given range.
+*/
 gameService.start = async () => {
     try {
         console.log('MATCH STARTRED.');
