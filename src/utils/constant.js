@@ -19,3 +19,5 @@ export const NUMBERS_RANGE = {
     MIN: 3,
     MAX: 10000
 };
+
+export const NUMBER_TO_DIVIDE = 3;

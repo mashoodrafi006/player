@@ -25,8 +25,8 @@ playerController.start = async (req, res) => {
 
 playerController.gamePlayedByPlayer1 = async (req, res) => {
     try {
-        const { number } = req.query;
-        if (!number){
+        let { number } = req.query;
+        if (!number) {
             number = gameService.randomIntFromInterval();
         }
         const numberPlayedWith = await gameService.play(PLAYERS.PLAYER_1, number);
@@ -46,8 +46,8 @@ playerController.gamePlayedByPlayer1 = async (req, res) => {
 
 playerController.gamePlayedByPlayer2 = async (req, res) => {
     try {
-        const { number } = req.query;
-        if (!number){
+        let { number } = req.query;
+        if (!number) {
             number = gameService.randomIntFromInterval();
         }
         const numberPlayedWith = await gameService.play(PLAYERS.PLAYER_2, number);

@@ -1,4 +1,4 @@
-import { PLAYERS, NUMBERS_RANGE } from '../utils/constant';
+import { PLAYERS, NUMBERS_RANGE, NUMBER_TO_DIVIDE } from '../utils/constant';
 import requests from "../requests/sendToPlayer";
 
 const gameService = {};
@@ -13,19 +13,19 @@ gameService.play = async (playerNumber, number) => {
         console.log('-------------------------');
         console.log("Player: ", playerNumber, ", Number: ", number);
         console.log('');
-        const minused1 = ((parseInt(number) + parseInt(minusOne)) % 3);
-        const addedZero = ((parseInt(number) + parseInt(zero)) % 3);
-        const addedOne = ((parseInt(number) + parseInt(plusOne)) % 3);
+        const addedMinusOne = ((parseInt(number) + parseInt(minusOne)) % NUMBER_TO_DIVIDE);
+        const addedZero = ((parseInt(number) + parseInt(zero)) % NUMBER_TO_DIVIDE);
+        const addedOne = ((parseInt(number) + parseInt(plusOne)) % NUMBER_TO_DIVIDE);
 
-        if (!minused1) {
+        if (!addedMinusOne) {
             responseBack.addedNumber = minusOne;
-            responseBack.resultingNumber = ((parseInt(number) + parseInt(minusOne)) / 3);
+            responseBack.resultingNumber = ((parseInt(number) + parseInt(minusOne)) / NUMBER_TO_DIVIDE);
         } else if (!addedZero) {
             responseBack.addedNumber = zero;
-            responseBack.resultingNumber = ((parseInt(number) + parseInt(zero)) / 3);
+            responseBack.resultingNumber = ((parseInt(number) + parseInt(zero)) / NUMBER_TO_DIVIDE);
         } else if (!addedOne) {
             responseBack.addedNumber = plusOne;
-            responseBack.resultingNumber = ((parseInt(number) + parseInt(plusOne)) / 3);
+            responseBack.resultingNumber = ((parseInt(number) + parseInt(plusOne)) / NUMBER_TO_DIVIDE);
         }
 
         if (responseBack.resultingNumber == 1) {
@@ -33,8 +33,10 @@ gameService.play = async (playerNumber, number) => {
             console.log('');
         } else {
             if (responseBack.resultingNumber && playerNumber == PLAYERS.PLAYER_1) {
+                console.log("Passing number to player 2");
                 requests.sendNumberToPlayer2(responseBack.resultingNumber);
             } else if (responseBack.resultingNumber && playerNumber == PLAYERS.PLAYER_2) {
+                console.log("Passing number to player 1");
                 requests.sendNumberToPlayer1(responseBack.resultingNumber);
             }
         }
