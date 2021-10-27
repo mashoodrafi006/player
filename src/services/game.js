@@ -1,6 +1,5 @@
 import requests from "../requests/sendToPlayer";
 import { PLAYERS } from '../utils/constant';
-import logger from "../utils/logging";
 
 const gameService = {};
 
