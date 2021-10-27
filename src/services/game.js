@@ -52,6 +52,7 @@ gameService.randomIntFromInterval = () => {
 
 gameService.start = async () => {
     try {
+        console.log('MATCH STARTRED.');
         const number = gameService.randomIntFromInterval();
         await requests.sendNumberToPlayer1(number);
 
