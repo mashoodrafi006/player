@@ -41,7 +41,6 @@ gameService.play = async (playerNumber, number) => {
         }
 
         return responseBack;
-
     } catch (error) {
         throw error;
     }

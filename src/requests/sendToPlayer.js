@@ -14,7 +14,7 @@ requests.sendNumberToPlayer1 = async (number) => {
 
 requests.sendNumberToPlayer2 = async (number) => {
     try {
-        const response = await Axios.get(`${config.applicationUrl.URL}/player2?number=${number}`);
+        const response = await Axios.get(`${config.applicationUrl}/player2?number=${number}`);
 
         return response.data;
     } catch (error) {
