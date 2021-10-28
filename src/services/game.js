@@ -1,5 +1,5 @@
 import { PLAYERS, NUMBERS_RANGE, NUMBER_TO_DIVIDE } from '../utils/constant';
-import requests from "../requests/sendToPlayer";
+import requests from "../requests/sendtoplayer";
 
 const gameService = {};
 gameService.play = async (playerNumber, number) => {
